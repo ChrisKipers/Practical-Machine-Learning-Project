@@ -28,7 +28,7 @@ field.and.variance <- gather(variance.of.column.averages, field, variance) %>%
   arrange(desc(variance))
 
 # Get the top 20 features based on variance between means
-top.20.features = field.and.variance[0:20, 1]
+top.20.features <- field.and.variance[0:20, 1]
 
 # Train the model
 formula <- paste("classe ~", paste(top.20.features, collapse = " + "))
@@ -41,8 +41,7 @@ predicted.values <- predict(model, testing.data)
 
 # Write predicted results to files for submission
 dir.create("results")
-n = length(predicted.values)
-for(i in 1:n){
+for(i in 1:length(predicted.values)){
   filename = paste0("results/problem_id_",i,".txt")
   write.table(predicted.values[i]
               ,file=filename,
