@@ -42,7 +42,7 @@ predicted.values <- predict(model, testing.data)
 # Write predicted results to files for submission
 dir.create("results")
 for(i in 1:length(predicted.values)){
-  filename = paste0("results/problem_id_",i,".txt")
+  filename = paste("results/problem_id_",i,".txt")
   write.table(predicted.values[i]
               ,file=filename,
               quote=FALSE,
